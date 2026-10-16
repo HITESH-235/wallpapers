@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+set -e
+
+REPO_ROOT="$(git rev-parse --show-toplevel)"
+
+if [ -f "$REPO_ROOT/.scripts/generate_readme.py" ]; then
+    python3 "$REPO_ROOT/.scripts/generate_readme.py"
+    if [ -f "$REPO_ROOT/README.md" ]; then
+        git add "$REPO_ROOT/README.md"
+    fi
+fi
